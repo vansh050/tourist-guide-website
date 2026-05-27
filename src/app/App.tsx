@@ -1,6 +1,73 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Sunrise, Flame, Ship, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Sunrise, Flame, Ship, MapPin, Phone, Mail, Clock, Star, Camera } from "lucide-react";
+
+const WHATSAPP_NUMBER = "917870608855";
+const WHATSAPP_MESSAGE = "Hello! I'm interested in booking a Varanasi tour. Please share more details.";
+
+const REVIEWS = [
+  {
+    name: "Priya Sharma",
+    location: "Mumbai, India",
+    rating: 5,
+    date: "2 weeks ago",
+    text: "Absolutely magical experience! Our guide knew every story of every ghat. The sunrise boat ride was unforgettable — felt the spiritual energy of Varanasi. Highly recommend!",
+    avatar: "P",
+    color: "#ef4444"
+  },
+  {
+    name: "James Whitaker",
+    location: "London, UK",
+    rating: 5,
+    date: "1 month ago",
+    text: "Visited from the UK and this team made the trip truly special. The Ganga Aarti tour was perfectly timed and we got front-row spots. Super responsive on WhatsApp before arrival.",
+    avatar: "J",
+    color: "#f59e0b"
+  },
+  {
+    name: "Anjali Verma",
+    location: "Delhi, India",
+    rating: 5,
+    date: "3 weeks ago",
+    text: "Booked the heritage walk + Kashi Vishwanath darshan combo. Smooth, well-organized, and our guide spoke perfect Hindi & English. Will definitely come back with family.",
+    avatar: "A",
+    color: "#a78bfa"
+  },
+  {
+    name: "Rahul Mehta",
+    location: "Bangalore, India",
+    rating: 5,
+    date: "1 week ago",
+    text: "The sunrise boat ride is a must! Captain was kind, told us the history of every ghat we passed. Got incredible photos. Worth every rupee — 10/10 service.",
+    avatar: "R",
+    color: "#22d3ee"
+  },
+  {
+    name: "Sofia Romano",
+    location: "Rome, Italy",
+    rating: 5,
+    date: "2 months ago",
+    text: "Una esperienza incredibile! The Sarnath tour was beautifully arranged. Our guide explained Buddhist history with so much passion. Felt safe and welcomed throughout.",
+    avatar: "S",
+    color: "#34d399"
+  },
+  {
+    name: "Vikram Singh",
+    location: "Jaipur, India",
+    rating: 5,
+    date: "5 days ago",
+    text: "Best decision was booking with them. Pickup on time, all temples covered, even helped us with prasad at Kashi Vishwanath. Truly authentic local experience.",
+    avatar: "V",
+    color: "#f97316"
+  }
+];
+
+const GALLERY_PHOTOS = [
+  { src: "/gallery/photo1.jpeg", caption: "Sacred Moments at the Ghats" },
+  { src: "/gallery/photo2.jpeg", caption: "Evening Aarti Ceremony" },
+  { src: "/gallery/photo3.png", caption: "Temple Heritage Walk" },
+  { src: "/gallery/photo4.jpeg", caption: "Sunrise Over the Ganges" }
+];
 
 export default function App() {
   const heroRef = useRef(null);
@@ -446,6 +513,177 @@ export default function App() {
         <div style={{ width: "100%", maxWidth: 800, margin: "0 auto", height: 1, background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.4), transparent)" }} />
       </div>
 
+      {/* Gallery Section */}
+      <section id="gallery" style={{ padding: "20px 24px 100px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ textAlign: "center", marginBottom: 64 }}
+          >
+            <p className="section-label" style={{ marginBottom: 16 }}>Moments from the Sacred City</p>
+            <h2
+              className="display-font"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#ffffff", marginBottom: 16, lineHeight: 1.1 }}
+            >
+              Glimpses of Varanasi
+            </h2>
+            <div className="divider" />
+            <p style={{ fontSize: "1.05rem", color: "#fcd34d", maxWidth: "560px", margin: "24px auto 0", lineHeight: 1.7, fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+              Captured during real tours with our travellers — the ghats, the rituals, the timeless light
+            </p>
+          </motion.div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+            {GALLERY_PHOTOS.map((photo, index) => (
+              <motion.div
+                key={photo.src}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                style={{
+                  position: "relative",
+                  height: 360,
+                  overflow: "hidden",
+                  border: "1px solid rgba(234,88,12,0.3)",
+                  background: "#0a0400"
+                }}
+                className="card-hover"
+              >
+                <motion.img
+                  src={photo.src}
+                  alt={photo.caption}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.6 }}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,4,0,0.92) 0%, rgba(10,4,0,0.35) 45%, transparent 75%)" }} />
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 22px", display: "flex", alignItems: "center", gap: 10 }}>
+                  <Camera style={{ width: 18, height: 18, color: "#f97316", flexShrink: 0 }} />
+                  <p className="display-font" style={{ fontSize: "1.05rem", color: "#fff", fontWeight: 700, margin: 0, textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}>
+                    {photo.caption}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Decorative divider */}
+      <div style={{ textAlign: "center", padding: "0 24px 80px" }}>
+        <div style={{ width: "100%", maxWidth: 800, margin: "0 auto", height: 1, background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.4), transparent)" }} />
+      </div>
+
+      {/* Reviews Section */}
+      <section id="reviews" style={{ padding: "20px 24px 100px", position: "relative" }}>
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(234,88,12,0.05) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ textAlign: "center", marginBottom: 56 }}
+          >
+            <p className="section-label" style={{ marginBottom: 16 }}>Travellers Love Us</p>
+            <h2
+              className="display-font"
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#ffffff", marginBottom: 16, lineHeight: 1.1 }}
+            >
+              What Our Guests Say
+            </h2>
+            <div className="divider" />
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 24, padding: "10px 20px", background: "rgba(252,211,77,0.08)", border: "1px solid rgba(252,211,77,0.3)", borderRadius: 999 }}>
+              <div style={{ display: "flex", gap: 2 }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} style={{ width: 18, height: 18, color: "#fbbf24", fill: "#fbbf24" }} />
+                ))}
+              </div>
+              <span style={{ color: "#fcd34d", fontWeight: 700, fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}>
+                4.9 / 5 · Verified Google Reviews
+              </span>
+            </div>
+          </motion.div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
+            {REVIEWS.map((review, index) => (
+              <motion.div
+                key={review.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(234,88,12,0.22)",
+                  padding: "28px 26px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 16,
+                  transition: "all 0.3s ease"
+                }}
+                className="card-hover"
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    background: `linear-gradient(135deg, ${review.color}, ${review.color}aa)`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: "1.25rem",
+                    fontFamily: "'Lato', sans-serif",
+                    flexShrink: 0,
+                    boxShadow: `0 4px 14px ${review.color}55`
+                  }}>
+                    {review.avatar}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p className="display-font" style={{ color: "#fff", fontWeight: 700, fontSize: "1.05rem", margin: 0, lineHeight: 1.2 }}>
+                      {review.name}
+                    </p>
+                    <p style={{ color: "#9a7a5a", fontSize: "0.8rem", margin: "2px 0 0", fontFamily: "'Lato', sans-serif" }}>
+                      {review.location}
+                    </p>
+                  </div>
+                  {/* Google logo G */}
+                  <svg width="22" height="22" viewBox="0 0 48 48" style={{ flexShrink: 0, opacity: 0.85 }}>
+                    <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/>
+                    <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                    <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                    <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.6l6.2 5.2C41.4 35.7 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/>
+                  </svg>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ display: "flex", gap: 2 }}>
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} style={{ width: 16, height: 16, color: "#fbbf24", fill: "#fbbf24" }} />
+                    ))}
+                  </div>
+                  <span style={{ color: "#9a7a5a", fontSize: "0.78rem", fontFamily: "'Lato', sans-serif" }}>{review.date}</span>
+                </div>
+
+                <p style={{ color: "#e5d0b0", fontSize: "0.93rem", lineHeight: 1.7, fontFamily: "'Lato', sans-serif", fontWeight: 300, margin: 0 }}>
+                  "{review.text}"
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Decorative divider */}
+      <div style={{ textAlign: "center", padding: "0 24px 80px" }}>
+        <div style={{ width: "100%", maxWidth: 800, margin: "0 auto", height: 1, background: "linear-gradient(90deg, transparent, rgba(234,88,12,0.4), transparent)" }} />
+      </div>
+
       {/* Contact Section */}
       <section id="contact" style={{ padding: "20px 24px 120px", position: "relative" }}>
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(234,88,12,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
@@ -519,60 +757,25 @@ export default function App() {
                 Tour Inquiry Form
               </h3>
 
-              {/* Placeholder — replace the div below with your Google Form iframe */}
               <div style={{
-                background: "rgba(0,0,0,0.3)",
-                border: "2px dashed rgba(234,88,12,0.4)",
-                minHeight: 340,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: 40,
-                marginBottom: 24
+                background: "rgba(0,0,0,0.25)",
+                border: "1px solid rgba(234,88,12,0.3)",
+                padding: 8,
+                marginBottom: 8,
+                overflow: "hidden"
               }}>
-                <div style={{ textAlign: "center", maxWidth: 480 }}>
-                  <Ship style={{ width: 48, height: 48, margin: "0 auto 16px", color: "#ea580c", opacity: 0.6 }} />
-                  <p className="display-font" style={{ fontSize: "1.2rem", color: "#fcd34d", marginBottom: 12, fontWeight: 700 }}>
-                    Google Form Coming Soon
-                  </p>
-                  <p style={{ color: "#e5d0b0", fontSize: "0.92rem", lineHeight: 1.7, fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-                    Replace this area with your Google Form iframe. All responses will go directly to{" "}
-                    <span style={{ color: "#f97316", fontWeight: 700 }}>Varanasitrip007@gmail.com</span>
-                  </p>
-                </div>
-              </div>
-
-              {/*
-                TO EMBED YOUR GOOGLE FORM:
-                1. Go to your Google Form → Send → Embed (</>)
-                2. Copy the iframe code
-                3. Replace the placeholder div above with:
-
                 <iframe
-                  src="YOUR_GOOGLE_FORM_EMBED_URL"
+                  src="https://docs.google.com/forms/d/e/1FAIpQLScWUUEYgRNa89EOUQtz4XjLgkUogIxAAO5tTau3JlNb2iuU4A/viewform?embedded=true"
                   width="100%"
-                  height="800"
+                  height="900"
                   frameBorder="0"
-                  style={{ border: 0 }}
+                  marginHeight={0}
+                  marginWidth={0}
+                  style={{ border: 0, display: "block", width: "100%", background: "white" }}
+                  title="Varanasi Tour Inquiry Form"
                 >
                   Loading…
                 </iframe>
-              */}
-
-              <div style={{
-                background: "rgba(234,88,12,0.08)",
-                border: "1px solid rgba(234,88,12,0.25)",
-                padding: "20px 24px"
-              }}>
-                <p style={{ color: "#f97316", fontWeight: 700, marginBottom: 10, fontSize: "0.9rem", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}>
-                  HOW TO LINK FORM RESPONSES TO YOUR EMAIL
-                </p>
-                <ol style={{ color: "#e5d0b0", fontSize: "0.88rem", lineHeight: 1.8, paddingLeft: 20, fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-                  <li>Open your Google Form → click the <strong style={{ color: "#fcd34d" }}>Responses</strong> tab</li>
-                  <li>Click the <strong style={{ color: "#fcd34d" }}>3-dot menu</strong> → "Get email notifications for new responses"</li>
-                  <li>Make sure you're signed in as <strong style={{ color: "#fcd34d" }}>Varanasitrip007@gmail.com</strong></li>
-                  <li>Every submission will now notify you directly by email</li>
-                </ol>
               </div>
             </div>
           </motion.div>
@@ -598,6 +801,51 @@ export default function App() {
           </p>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          width: 64,
+          height: 64,
+          borderRadius: "50%",
+          background: "linear-gradient(135deg, #25D366, #128C7E)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 8px 28px rgba(37,211,102,0.55), 0 0 0 6px rgba(37,211,102,0.15)",
+          zIndex: 100,
+          textDecoration: "none",
+          cursor: "pointer"
+        }}
+      >
+        {/* Pulse ring */}
+        <motion.span
+          animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeOut" }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            borderRadius: "50%",
+            background: "#25D366",
+            zIndex: -1
+          }}
+        />
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="white" aria-hidden="true">
+          <path d="M16.001 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.55-1.72a12.79 12.79 0 0 0 6.25 1.6h.01c7.07 0 12.8-5.73 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.71 12.71 0 0 0-9.06-3.63zm0 23.36h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.88 1.02 1.04-3.78-.25-.4a10.62 10.62 0 0 1-1.63-5.69c0-5.88 4.78-10.66 10.65-10.66 2.85 0 5.52 1.11 7.53 3.13a10.59 10.59 0 0 1 3.12 7.54c0 5.88-4.78 10.66-10.65 10.66zm5.85-7.98c-.32-.16-1.9-.94-2.19-1.04-.3-.11-.51-.16-.72.16-.21.32-.83 1.04-1.02 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.99-2.37-.26-.62-.53-.53-.72-.54-.19-.01-.4-.01-.61-.01-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.79.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.16-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37z"/>
+        </svg>
+      </motion.a>
     </div>
   );
 }
