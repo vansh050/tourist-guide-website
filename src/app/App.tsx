@@ -822,34 +822,39 @@ export default function App() {
           position: "fixed",
           bottom: 28,
           right: 28,
-          width: 96,
-          height: 96,
-          borderRadius: "50%",
+          padding: "14px 26px 14px 18px",
+          borderRadius: 999,
           background: "linear-gradient(135deg, #25D366, #128C7E)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          gap: 12,
           boxShadow: "0 10px 32px rgba(37,211,102,0.6), 0 0 0 8px rgba(37,211,102,0.15)",
           zIndex: 100,
           textDecoration: "none",
-          cursor: "pointer"
+          cursor: "pointer",
+          color: "white",
+          fontFamily: "'Lato', sans-serif",
+          fontWeight: 700,
+          fontSize: "1.05rem",
+          letterSpacing: "0.03em"
         }}
       >
         {/* Pulse ring */}
         <motion.span
-          animate={{ scale: [1, 1.6], opacity: [0.5, 0] }}
+          animate={{ scale: [1, 1.15], opacity: [0.5, 0] }}
           transition={{ repeat: Infinity, duration: 1.8, ease: "easeOut" }}
           style={{
             position: "absolute",
             inset: 0,
-            borderRadius: "50%",
+            borderRadius: 999,
             background: "#25D366",
             zIndex: -1
           }}
         />
-        <svg width="52" height="52" viewBox="0 0 32 32" fill="white" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 32 32" fill="white" aria-hidden="true">
           <path d="M16.001 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.55-1.72a12.79 12.79 0 0 0 6.25 1.6h.01c7.07 0 12.8-5.73 12.8-12.8 0-3.42-1.33-6.63-3.75-9.05a12.71 12.71 0 0 0-9.06-3.63zm0 23.36h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-3.88 1.02 1.04-3.78-.25-.4a10.62 10.62 0 0 1-1.63-5.69c0-5.88 4.78-10.66 10.65-10.66 2.85 0 5.52 1.11 7.53 3.13a10.59 10.59 0 0 1 3.12 7.54c0 5.88-4.78 10.66-10.65 10.66zm5.85-7.98c-.32-.16-1.9-.94-2.19-1.04-.3-.11-.51-.16-.72.16-.21.32-.83 1.04-1.02 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.99-2.37-.26-.62-.53-.53-.72-.54-.19-.01-.4-.01-.61-.01-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.79.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.16-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37z"/>
         </svg>
+        <span style={{ whiteSpace: "nowrap" }}>Chat with us</span>
       </motion.a>
     </div>
   );
