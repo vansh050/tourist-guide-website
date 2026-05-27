@@ -758,24 +758,29 @@ export default function App() {
               </h3>
 
               <div style={{
-                background: "rgba(0,0,0,0.25)",
+                background: "rgba(234,88,12,0.06)",
                 border: "1px solid rgba(234,88,12,0.3)",
-                padding: 8,
-                marginBottom: 8,
-                overflow: "hidden"
+                padding: "36px 28px",
+                textAlign: "center"
               }}>
-                <iframe
-                  src="https://docs.google.com/forms/d/e/1FAIpQLScWUUEYgRNa89EOUQtz4XjLgkUogIxAAO5tTau3JlNb2iuU4A/viewform?embedded=true"
-                  width="100%"
-                  height="900"
-                  frameBorder="0"
-                  marginHeight={0}
-                  marginWidth={0}
-                  style={{ border: 0, display: "block", width: "100%", background: "white" }}
-                  title="Varanasi Tour Inquiry Form"
+                <Ship style={{ width: 44, height: 44, margin: "0 auto 14px", color: "#f97316" }} />
+                <p className="display-font" style={{ fontSize: "1.25rem", color: "#fcd34d", marginBottom: 10, fontWeight: 700 }}>
+                  Share Your Travel Details
+                </p>
+                <p style={{ color: "#e5d0b0", fontSize: "0.95rem", lineHeight: 1.7, fontFamily: "'Lato', sans-serif", fontWeight: 300, maxWidth: 520, margin: "0 auto 26px" }}>
+                  Click below to fill our quick inquiry form. We'll get back to you within a few hours with a customized itinerary.
+                </p>
+                <motion.a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScWUUEYgRNa89EOUQtz4XjLgkUogIxAAO5tTau3JlNb2iuU4A/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  style={{ display: "inline-block", textDecoration: "none" }}
                 >
-                  Loading…
-                </iframe>
+                  Fill the Inquiry Form
+                </motion.a>
               </div>
             </div>
           </motion.div>
